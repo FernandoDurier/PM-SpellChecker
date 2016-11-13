@@ -34,7 +34,19 @@ public class SpellingCorrector {
 
     public static void main(String[] args) throws IOException {
 
-        zip_reader.read("C:\\Users\\Cliente\\Desktop\\dictionary_pt-br.zip", dicionario);
+        BufferedReader br = zip_reader.read("C:\\Users\\Cliente\\Desktop\\dictionary_pt-br.zip"); //alimentando o dicionario
+        try { //colocando palavras pra dentro do dicionario
+            System.out.println("Carregando as Palavras do Dicionario");
+            String line = br.readLine();
+            while (line != null) {
+                //System.out.println(line);
+                dicionario.put(line.toLowerCase(), 1);
+                line = br.readLine();
+            }
+
+        } finally {
+            br.close();
+        }
 
         Scanner input = new Scanner(System.in);
         System.out.print("Digite uma palavra: ");

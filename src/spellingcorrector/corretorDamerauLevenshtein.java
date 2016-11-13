@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package bktree;
+package spellingcorrector;
 
 /**
  *
  * @author Cliente
  */
-public class bktree {
-    
+public class corretorDamerauLevenshtein {
+
 }

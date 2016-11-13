@@ -10,14 +10,15 @@ package bktree;
  * @author Cliente
  */
 public class levenshtein { //dá a distância de levenshtein entre duas strings
-    
+
     public static int distance(String a, String b) {
         a = a.toLowerCase();
         b = b.toLowerCase();
         // i == 0
-        int [] costs = new int [b.length() + 1];
-        for (int j = 0; j < costs.length; j++)
+        int[] costs = new int[b.length() + 1];
+        for (int j = 0; j < costs.length; j++) {
             costs[j] = j;
+        }
         for (int i = 1; i <= a.length(); i++) {
             // j == 0; nw = lev(i - 1, j)
             costs[0] = i;
@@ -30,12 +31,11 @@ public class levenshtein { //dá a distância de levenshtein entre duas strings
         }
         return costs[b.length()];
     }
- 
+
     /* teste de levenshtein
     public static void main(String [] args) {
         String [] data = { "kitten", "sitting", "saturday", "sunday", "rosettacode", "raisethysword" };
         for (int i = 0; i < data.length; i += 2)
             System.out.println("distance(" + data[i] + ", " + data[i+1] + ") = " + distance(data[i], data[i+1]));
     }*/
-
 }

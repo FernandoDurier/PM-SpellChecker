@@ -10,5 +10,5 @@ package bktree;
  * @author Cliente
  */
 public class damerauLevenshtein {
-    
+
 }

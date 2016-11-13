@@ -24,7 +24,7 @@ import java.util.zip.ZipFile;
  */
 public class zip_reader {
 
-    public static void read(String path, Map<String, Integer> dicionario) throws IOException {
+    public static BufferedReader read(String path) throws IOException {
         ZipFile zipFile = new ZipFile(path);
         Enumeration<? extends ZipEntry> entries = zipFile.entries();
         String filepath = null;
@@ -32,27 +32,17 @@ public class zip_reader {
         while (entries.hasMoreElements()) {
             ZipEntry entry = entries.nextElement();
             if (entry.toString().equals("dictionary pt-br.dic")) {
-                System.out.println("Achei dicionario !!");
+                //System.out.println("Achei dicionario !!");
                 input = zipFile.getInputStream(entry);
-                System.out.println("Esse é seu dicionario, " + input);
+                //System.out.println("Esse é seu dicionario, " + entry);
                 break;
             }
-            System.out.println("Procurando dicionario !!");
+            //System.out.println("Procurando dicionario !!");
         }
         if (input != null) {
             BufferedReader br = new BufferedReader(new InputStreamReader(input, "UTF-8"));
-            try {
-                System.out.println("Carregando as Palavras do Dicionario");
-                String line = br.readLine();
-                while (line != null) {
-                    //System.out.println(line);
-                    dicionario.put(line, 1);
-                    line = br.readLine();
-                }
-
-            } finally {
-                br.close();
-            }
+            return br;
         }
+        return null;
     }
 }
