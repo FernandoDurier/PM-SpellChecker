@@ -1,4 +1,5 @@
 
+import IO_Controller.zip_reader;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,20 +29,12 @@ import java.util.Scanner;
  - candidates : loop edits and populate. map to weight to word */
 public class SpellingCorrector {
 
+// Mapa para contar palavra, quantas vezes uma palavra está presente ou um peso associado a uma palavra
+    public static Map<String, Integer> dicionario = new HashMap<String, Integer>();
+
     public static void main(String[] args) throws IOException {
 
-        // Adicionar palavras com grafia correta ao dicionário
-         BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Cliente\\Desktop\\bolsa ic 2\\unirio-workspace\\Msc\\Portuguese-Realizer\\src\\test\\resources\\corpus-substantivos.txt"));
-        try {
-            String line = br.readLine();
-            while (line != null) {
-                dicionario.put(line, 1);
-                line = br.readLine();
-            }
-            
-        } finally {
-            br.close();
-        }
+        zip_reader.read("C:\\Users\\Cliente\\Desktop\\dictionary_pt-br.zip", dicionario);
 
         Scanner input = new Scanner(System.in);
         System.out.print("Digite uma palavra: ");
@@ -54,9 +47,6 @@ public class SpellingCorrector {
         String palavraCorreta = palavraCorreta(palavra);
         System.out.println("Você quis dizer '" + palavraCorreta + "'? \n");
     }
-
-    // Mapa para contar palavra, quantas vezes uma palavra está presente ou um peso associado a uma palavra
-    public static Map<String, Integer> dicionario = new HashMap<String, Integer>();
 
     public static String palavraCorreta(String palavra) {
 

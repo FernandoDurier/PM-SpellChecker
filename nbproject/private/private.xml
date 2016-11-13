@@ -4,6 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/IO_Controller/zip_reader.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/bktree/levenshtein.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/bktree/bktree.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/bktree/damerauLevenshtein.java</file>
             <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/SpellingCorrector.java</file>
         </group>
     </open-files>
