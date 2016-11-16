@@ -38,12 +38,12 @@ public class corretorLevenshtein {
         dicionario.close();
     }
 
-    public String corrigir(String palavraErrada, noBkTreeLevenshtein no) {
+    public String corrigir(String palavraErrada, noBkTreeLevenshtein no,int precisao) {
         //System.out.println("Palavra Buscada: "+palavraErrada);
         if(no != null){
             //System.out.println("Palavra Comparada: " + no.getPalavra());
            // System.out.println(no.getPalavra() + " com distancia de " + levenshtein.distance(no.getPalavra(), palavraErrada));
-            if (levenshtein.distance(no.getPalavra(), palavraErrada) <= 2) {
+            if (levenshtein.distance(no.getPalavra(), palavraErrada) <= precisao) {
                 String resposta = no.getPalavra();
                 //System.out.println("Achei a correção para " + palavraErrada + " , eh " +resposta+ " !!");
                 return resposta;
@@ -51,7 +51,7 @@ public class corretorLevenshtein {
             else {
                 int dist = levenshtein.distance(no.getPalavra(), palavraErrada);
                 noBkTreeLevenshtein irmao = no.getIrmao(dist);
-                return corrigir(palavraErrada, irmao);
+                return corrigir(palavraErrada, irmao, precisao);
             }
         }
         else{
