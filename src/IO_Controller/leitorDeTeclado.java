@@ -5,10 +5,24 @@
  */
 package IO_Controller;
 
+import java.util.HashMap;
+
 /**
  *
  * @author Cliente
  */
 public class leitorDeTeclado {
-
+    
+    private HashMap<String,Integer> teclados = new HashMap<String,Integer>();
+            
+    private void carregarTeclados(String path){
+        
+        
+        
+    }
+    
+   public void pegarEspecificacoesDoTeclado(String teclado){
+       
+   }
+   
 }

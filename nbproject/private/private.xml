@@ -3,7 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/spellingcorrector/corretorLevenshtein.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/IO_Controller/leitorDeTeclado.java</file>
+            <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/bktree/damerauLevenshtein.java</file>
             <file>file:/C:/Users/Cliente/Desktop/SpellingCorrector/SpellingCorrector/src/main.java</file>
         </group>
     </open-files>

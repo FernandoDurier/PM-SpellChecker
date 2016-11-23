@@ -1,6 +1,8 @@
 
+import bktree.damerauLevenshtein;
 import java.io.File;
 import java.io.IOException;
+import spellingcorrector.corretorDamerauLevenshtein;
 import spellingcorrector.corretorLevenshtein;
 
 /*
@@ -18,27 +20,34 @@ public class main {
 
         File arquivorelativo = new File("dictionary_pt-br.zip");
         String pathRelativo = arquivorelativo.getCanonicalPath();
-        corretorLevenshtein cl = new corretorLevenshtein(pathRelativo);
+        corretorLevenshtein cl = new corretorLevenshtein(pathRelativo);        
+
+        cl.raizDaCorrecao("ZOMBI",1);
+        cl.raizDaCorrecao("BALL", 1);
+        cl.raizDaCorrecao("HOM3M", 1);
+        cl.raizDaCorrecao("CAZA", 1);
+        cl.raizDaCorrecao("CAS", 1);
+        cl.raizDaCorrecao("CASx", 2);
+        cl.raizDaCorrecao("CASA",0);
+        cl.raizDaCorrecao("AS",1);
+        cl.raizDaCorrecao("ASA",0);
         
-       
-        String correcao = cl.corrigir("CLIPEx", cl.getBkl(),1);
-        System.out.println(correcao);
-        correcao = cl.corrigir("A", cl.getBkl(),1);
-        System.out.println(correcao);
-        correcao = cl.corrigir("HOM3M", cl.getBkl(),2);
-        System.out.println(correcao);
-        correcao = cl.corrigir("ZUMBI", cl.getBkl(),2);
-        System.out.println(correcao);
-        correcao = cl.corrigir("ZOMBI", cl.getBkl(),2);
-        System.out.println(correcao);
-        correcao = cl.corrigir("ZUMBA", cl.getBkl(),2);
-        System.out.println(correcao);
-        correcao = cl.corrigir("CASA", cl.getBkl(),0);
-        System.out.println(correcao);
-        correcao = cl.corrigir("CAS", cl.getBkl(),1);
-        System.out.println(correcao);
-        correcao = cl.corrigir("CA", cl.getBkl(),1);
-        System.out.println(correcao);
-        
+      System.out.println(damerauLevenshtein.EditDistance("ASA","CASA"));
+      System.out.println(damerauLevenshtein.EditDistance("ASA","CoooSA"));
+      
+      corretorDamerauLevenshtein cdl = new corretorDamerauLevenshtein(pathRelativo);
+      
+        cdl.raizDaCorrecao("CASAa",1);
+        cdl.raizDaCorrecao("ASX", 1);
+        cdl.raizDaCorrecao("ZOMBI",1);
+        cdl.raizDaCorrecao("BALL", 1);
+        cdl.raizDaCorrecao("HOM3M", 1);
+        cdl.raizDaCorrecao("CAZA", 1);
+        cdl.raizDaCorrecao("CAS", 1);
+        cdl.raizDaCorrecao("CASx", 2);
+        cdl.raizDaCorrecao("CASA",0);
+        cdl.raizDaCorrecao("AS",1);
+        cdl.raizDaCorrecao("ASA",0);
+      
     }
 }

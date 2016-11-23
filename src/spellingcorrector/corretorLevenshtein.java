@@ -8,6 +8,7 @@ package spellingcorrector;
 import IO_Controller.zip_reader;
 import bktree.levenshtein;
 import bktree.noBkTreeLevenshtein;
+import bktree.raizBKTreeLevenshtein;
 import java.io.BufferedReader;
 import java.io.IOException;
 
@@ -17,7 +18,7 @@ import java.io.IOException;
  */
 public class corretorLevenshtein {
 
-    private noBkTreeLevenshtein bkl;
+    private raizBKTreeLevenshtein bkl;
     private BufferedReader dicionario;
 
     public corretorLevenshtein(String pathDoDicionario) throws IOException {
@@ -28,16 +29,17 @@ public class corretorLevenshtein {
 
     public void gerarArvore() throws IOException {
         String line = dicionario.readLine();
-        bkl = new noBkTreeLevenshtein(line); //primeira palavra do dicionario vai ser a raiz
+        bkl = new raizBKTreeLevenshtein(); //primeira palavra do dicionario vai ser a raiz
+        bkl.insereNaRaiz(line);
         line = dicionario.readLine();
         while (line != null) {
             //System.out.println(line);
-            bkl.insereIrmao(levenshtein.distance(bkl.getPalavra(), line), new noBkTreeLevenshtein(line));
+            bkl.insereNaRaiz(line);
             line = dicionario.readLine();
         }
         dicionario.close();
     }
-
+    
     public String corrigir(String palavraErrada, noBkTreeLevenshtein no,int precisao) {
         //System.out.println("Palavra Buscada: "+palavraErrada);
         if(no != null){
@@ -58,12 +60,21 @@ public class corretorLevenshtein {
             return "Nao consta no dicionario a correcao para tal palavra.";
         }
     }
+    
+    public void raizDaCorrecao(String palavra,int tolerancia){
+        int indice = bkl.indexRaiz(palavra);
+        System.out.println("indice alfabetico: "+indice);
+        System.out.println("Primeira palavra do ramo " + bkl.getPalavras().get(indice).getPalavra());
+        System.out.println("inicial: " + bkl.getPalavras().get(indice).getPalavra());
+        System.out.println("Com "+palavra+" voce quis dizer "+ corrigir(palavra,bkl.getPalavras().get(indice),tolerancia));
+        System.out.println();
+    }
 
-    public noBkTreeLevenshtein getBkl() {
+    public raizBKTreeLevenshtein getBkl() {
         return bkl;
     }
 
-    public void setBkl(noBkTreeLevenshtein bkl) {
+    public void setBkl(raizBKTreeLevenshtein bkl) {
         this.bkl = bkl;
     }
 
