@@ -22,6 +22,10 @@ public class main {
         String pathRelativo = arquivorelativo.getCanonicalPath();
         corretorLevenshtein cl = new corretorLevenshtein(pathRelativo);        
 
+      System.out.println("-----------------------------------------------");
+      System.out.println("-----------Com Levenshtein---------------------");
+      System.out.println("-----------------------------------------------");
+        
         cl.raizDaCorrecao("ZOMBI",1);
         cl.raizDaCorrecao("BALL", 1);
         cl.raizDaCorrecao("HOM3M", 1);
@@ -32,13 +36,14 @@ public class main {
         cl.raizDaCorrecao("AS",1);
         cl.raizDaCorrecao("ASA",0);
         
-      System.out.println(damerauLevenshtein.EditDistance("ASA","CASA"));
-      System.out.println(damerauLevenshtein.EditDistance("ASA","CoooSA"));
+      System.out.println("----------------------------------------------");
+      System.out.println("-----------Com Damerau------------------------");
+      System.out.println("----------------------------------------------");
       
       corretorDamerauLevenshtein cdl = new corretorDamerauLevenshtein(pathRelativo);
       
-        cdl.raizDaCorrecao("CASAa",1);
-        cdl.raizDaCorrecao("ASX", 1);
+        cdl.raizDaCorrecao("CASAa",2);
+        cdl.raizDaCorrecao("ASX", 2);
         cdl.raizDaCorrecao("ZOMBI",1);
         cdl.raizDaCorrecao("BALL", 1);
         cdl.raizDaCorrecao("HOM3M", 1);
@@ -48,6 +53,5 @@ public class main {
         cdl.raizDaCorrecao("CASA",0);
         cdl.raizDaCorrecao("AS",1);
         cdl.raizDaCorrecao("ASA",0);
-      
     }
 }

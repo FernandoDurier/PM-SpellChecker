@@ -12,41 +12,55 @@ package bktree;
 public class damerauLevenshtein {
 
     @SuppressWarnings("empty-statement")
-    public static int EditDistance(String original, String modified) {
-        int len_orig = original.length();
-        int len_diff = modified.length();
-
-        int[][] matrix = new int[len_orig + 1][len_diff + 1];
-        for (int i = 0; i <= len_orig; i++) {
-            matrix[i][0] = i;
-        }
-        for (int j = 0; j <= len_diff; j++) {
-            matrix[0][j] = j;
-        }
-
-        for (int i = 1; i <= len_orig; i++) {
-            for (int j = 1; j <= len_diff; j++) {
-                int cost = -1;//? 0 : 1;
-                if (modified.charAt(j - 1) == original.charAt(i - 1)) {
-                    cost = 0;
-                } else {
-                    cost = 1;
-                }
-                int[] vals = {matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost};
-                int minimo = -1;
-                int index = 0;
-                for (int m = 1; m < vals.length; m++) {
-                    if (vals[m] < vals[index]) {
-                        minimo = vals[m];
-                        index = m;
-                    }
-                }
-                matrix[i][j] = minimo;
-                if (i > 1 && j > 1 && original.charAt(i - 1) == modified.charAt(j - 2) && original.charAt(i - 2) == modified.charAt(j - 1)) {
-                    matrix[i][j] = Math.min(matrix[i][j], matrix[i - 2][j - 2] + cost);
-                }
-            }
-        }
-        return matrix[len_orig][len_diff];
+    public static int EditDistance(String palavraInserida, String palavraDicionario) {
+         //Variaveis que definem o tamanho da matriz
+       int tamanhoPalavraInserida = palavraInserida.length(),
+           tamanhoPalavraDicionario = palavraDicionario.length();
+       /**
+        * Variável da Matriz
+        */
+       int[][] distancia = new int[tamanhoPalavraInserida+1][tamanhoPalavraDicionario+1];
+      
+       //Define o valor que irá popular a tabela da matriz
+       int custoDistancia =0;
+       
+       //cria a matriz com a tabela de distancia
+        
+       for(int i = 0; i <= tamanhoPalavraInserida; i++)
+       {
+           distancia[i][0] = i;
+       }
+       for(int j = 0; j <= tamanhoPalavraDicionario; j++)
+       {
+           distancia[0][j] = j;
+       }
+       
+       //popula a tabela e faz a verificação da distancia de cada letra
+       
+       for(int k = 1; k <= tamanhoPalavraInserida;  k++)
+       {
+           for(int l = 1; l <= tamanhoPalavraDicionario; l++)
+           {
+               if(palavraInserida.charAt(k-1) == palavraDicionario.charAt(l-1))
+               {
+                   custoDistancia = 0;
+               }
+               else
+               {
+                   custoDistancia = 1;
+               }
+               distancia[k][l] = Math.min(distancia[k-1][l]+1,
+                       Math.min(distancia[k][l-1]+1, distancia[k-1][l-1]+custoDistancia));
+               if(k > 1 && l > 1
+                  && palavraInserida.charAt(k-1) == palavraDicionario.charAt(l-2)
+                  && palavraInserida.charAt(k-2) == palavraDicionario.charAt(l-1))
+               {
+                  distancia[k][l] = Math.min(distancia[k][l], distancia[k-2][l-2]+custoDistancia);
+               }
+           }
+           
+       }
+       
+       return distancia[tamanhoPalavraInserida][tamanhoPalavraDicionario];
     }
 }

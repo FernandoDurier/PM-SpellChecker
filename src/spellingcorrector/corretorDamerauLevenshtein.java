@@ -64,13 +64,14 @@ public class corretorDamerauLevenshtein {
         }
     }
     
-    public void raizDaCorrecao(String palavra,int tolerancia){
+    public String raizDaCorrecao(String palavra,int tolerancia){
         int indice = bkl.indexRaiz(palavra);
         System.out.println("indice alfabetico: "+indice);
         System.out.println("Primeira palavra do ramo " + bkl.getPalavras().get(indice).getPalavra());
         System.out.println("inicial: " + bkl.getPalavras().get(indice).getPalavra());
         System.out.println("Com "+palavra+" voce quis dizer "+ corrigir(palavra,bkl.getPalavras().get(indice),tolerancia));
         System.out.println();
+        return corrigir(palavra,bkl.getPalavras().get(indice),tolerancia);
     }
 
     public raizBKTreeDamerauLevenshtein getBkl() {
