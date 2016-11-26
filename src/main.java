@@ -1,7 +1,10 @@
 
+import IO_Controller.leitorDeTeclado;
 import bktree.damerauLevenshtein;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import keyboard.layout;
 import spellingcorrector.corretorDamerauLevenshtein;
 import spellingcorrector.corretorLevenshtein;
 
@@ -18,7 +21,7 @@ public class main {
 
     public static void main(String[] args) throws IOException {
 
-        File arquivorelativo = new File("dictionary_pt-br.zip");
+        File arquivorelativo = new File("./dictionary_pt-br.zip");
         String pathRelativo = arquivorelativo.getCanonicalPath();
         corretorLevenshtein cl = new corretorLevenshtein(pathRelativo);        
 
@@ -53,5 +56,17 @@ public class main {
         cdl.raizDaCorrecao("CASA",0);
         cdl.raizDaCorrecao("AS",1);
         cdl.raizDaCorrecao("ASA",0);
+        
+        leitorDeTeclado lt = new leitorDeTeclado();
+        ArrayList<layout> lista =  lt.getLayoutTecladoDoXML();
+        for(int i = 0;i<lista.size();i++){
+            System.out.println("Tipo: " + lista.get(i).getTipo());
+            System.out.println("linha1: " + lista.get(i).getLine1());
+            System.out.println("linh2: "+lista.get(i).getLine2());
+            System.out.println("offset2: "+lista.get(i).getOffset2());
+            System.out.println("linha3: "+lista.get(i).getLine3());
+            System.out.println("offset3: "+lista.get(i).getOffset3());
+            System.out.println("");
+        }
     }
 }

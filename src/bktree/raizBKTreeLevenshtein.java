@@ -117,6 +117,7 @@ public class raizBKTreeLevenshtein{
             palavras.get(onde).insereIrmao(levenshtein.distance(palavras.get(onde).getPalavra(), palavra), new noBkTreeLevenshtein(palavra));
         }
         else{
+           // System.out.println("PalavraRaiz: " + palavra + " Indice: " + onde);
            palavras.put(onde, new noBkTreeLevenshtein(palavra));
         }
         

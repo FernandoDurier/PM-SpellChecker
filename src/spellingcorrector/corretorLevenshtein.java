@@ -43,7 +43,7 @@ public class corretorLevenshtein {
     public String corrigir(String palavraErrada, noBkTreeLevenshtein no,int precisao) {
         //System.out.println("Palavra Buscada: "+palavraErrada);
         if(no != null){
-            //System.out.println("Palavra Comparada: " + no.getPalavra());
+           // System.out.println("Palavra Comparada: " + no.getPalavra());
            // System.out.println(no.getPalavra() + " com distancia de " + levenshtein.distance(no.getPalavra(), palavraErrada));
             if (levenshtein.distance(no.getPalavra(), palavraErrada) <= precisao) {
                 String resposta = no.getPalavra();

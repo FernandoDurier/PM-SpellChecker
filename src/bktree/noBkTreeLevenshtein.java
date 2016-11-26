@@ -34,7 +34,7 @@ public class noBkTreeLevenshtein {
             int pesoNovo = levenshtein.distance(irmaos.get(peso).getPalavra(), irmao.getPalavra());
             irmaos.get(peso).insereIrmao(pesoNovo, irmao);
         } else {
-            // System.out.println("Inserindo " + irmao.getPalavra() +" com peso de "+peso);
+           // System.out.println("Inserindo " + irmao.getPalavra() +" com peso de "+peso);
             irmaos.put(peso, irmao);
         }
     }
