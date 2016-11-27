@@ -39,36 +39,34 @@ public class corretorLevenshtein {
         }
         dicionario.close();
     }
-    
-    public String corrigir(String palavraErrada, noBkTreeLevenshtein no,int precisao) {
+
+    public String corrigir(String palavraErrada, noBkTreeLevenshtein no, int precisao) {
         //System.out.println("Palavra Buscada: "+palavraErrada);
-        if(no != null){
-           // System.out.println("Palavra Comparada: " + no.getPalavra());
-           // System.out.println(no.getPalavra() + " com distancia de " + levenshtein.distance(no.getPalavra(), palavraErrada));
+        if (no != null) {
+            // System.out.println("Palavra Comparada: " + no.getPalavra());
+            // System.out.println(no.getPalavra() + " com distancia de " + levenshtein.distance(no.getPalavra(), palavraErrada));
             if (levenshtein.distance(no.getPalavra(), palavraErrada) <= precisao) {
                 String resposta = no.getPalavra();
                 //System.out.println("Achei a correção para " + palavraErrada + " , eh " +resposta+ " !!");
                 return resposta;
-            } 
-            else {
+            } else {
                 int dist = levenshtein.distance(no.getPalavra(), palavraErrada);
                 noBkTreeLevenshtein irmao = no.getIrmao(dist);
                 return corrigir(palavraErrada, irmao, precisao);
             }
-        }
-        else{
+        } else {
             return "Nao consta no dicionario a correcao para tal palavra.";
         }
     }
-    
-    public String raizDaCorrecao(String palavra,int tolerancia){
+
+    public String raizDaCorrecao(String palavra, int tolerancia) {
         int indice = bkl.indexRaiz(palavra);
-        System.out.println("indice alfabetico: "+indice);
+        System.out.println("indice alfabetico: " + indice);
         System.out.println("Primeira palavra do ramo " + bkl.getPalavras().get(indice).getPalavra());
         System.out.println("inicial: " + bkl.getPalavras().get(indice).getPalavra());
-        System.out.println("Com "+palavra+" voce quis dizer "+ corrigir(palavra,bkl.getPalavras().get(indice),tolerancia));
+        System.out.println("Com " + palavra + " voce quis dizer " + corrigir(palavra, bkl.getPalavras().get(indice), tolerancia));
         System.out.println();
-        return corrigir(palavra,bkl.getPalavras().get(indice),tolerancia);
+        return corrigir(palavra, bkl.getPalavras().get(indice), tolerancia);
     }
 
     public raizBKTreeLevenshtein getBkl() {

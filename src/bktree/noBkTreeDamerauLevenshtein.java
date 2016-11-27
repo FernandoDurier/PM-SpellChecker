@@ -13,7 +13,8 @@ import java.util.Map;
  * @author Cliente
  */
 public class noBkTreeDamerauLevenshtein {
-     private String palavra;
+
+    private String palavra;
     private HashMap<Integer, noBkTreeDamerauLevenshtein> irmaos = new java.util.HashMap<Integer, noBkTreeDamerauLevenshtein>();
 
     public noBkTreeDamerauLevenshtein(String palavra) {

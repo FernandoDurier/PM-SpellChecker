@@ -62,11 +62,20 @@ public class main {
         for(int i = 0;i<lista.size();i++){
             System.out.println("Tipo: " + lista.get(i).getTipo());
             System.out.println("linha1: " + lista.get(i).getLine1());
+            System.out.println("offset1:" + lista.get(i).getOffset1());
             System.out.println("linh2: "+lista.get(i).getLine2());
             System.out.println("offset2: "+lista.get(i).getOffset2());
             System.out.println("linha3: "+lista.get(i).getLine3());
             System.out.println("offset3: "+lista.get(i).getOffset3());
             System.out.println("");
+        }
+        
+        double [][] m = lista.get(0).prepararDistancias();
+        
+        for(int x = 0;x<26;x++){
+            for(int y = 0;y<26;y++){
+                System.out.println("Diferença de "+ x + " para " + y + " = " + m[x][y]);
+            }
         }
     }
 }
